@@ -15,5 +15,24 @@ void main()
 {
    color = uColor;
    uv = vPos.xy;
-   gl_Position = vec4(vPos, 1.0); 
+   
+   vec3 d = uOffset - (uSize / 2.0f);
+   mat4 TranslationMatrix = mat4(
+      1.0, 0.0, 0.0, 0.0,
+      0.0, 1.0, 0.0, 0.0,
+      0.0, 0.0, 1.0, 0.0,
+      d, 1.0
+   );
+
+   mat4 ScaleMatrix = mat4(
+      uSize, 0.0, 0.0, 0.0,
+      0.0, uSize, 0.0, 0.0,
+      0.0, 0.0, uSize, 0.0,
+      0.0, 0.0, 0.0, 1.0
+   );
+
+
+   vec4 OriginalVector = vec4(vPos, 1.0);
+   
+   gl_Position = TranslationMatrix * ScaleMatrix * OriginalVector; 
 }
