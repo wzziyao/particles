@@ -33,15 +33,17 @@ void Confetti::update(float dt)
     mParticles[i] = current;
   }
 
-  vec3 camPos = theRenderer.cameraPosition();
-  for (int j = 1; j < mParticles.size(); j++) {
-    float d2 = length(camPos - mParticles[j].pos);
-    float d1 = length(camPos - mParticles[j-1].pos);
-    if (d2 < d1) {
-      Particle temp = mParticles[j];
-      mParticles[j] = mParticles[j-1];
-      mParticles[j-1] = temp;
-    }
+  // selection sort
+  int i, j, min_idx; 
+  
+  for (i = 0; i < mParticles.size()-1; i++) 
+  { 
+      min_idx = i; 
+      for (j = i+1; j < mParticles.size(); j++) 
+      if (mParticles[j].pos.z < mParticles[min_idx].pos.z) 
+          min_idx = j; 
+
+      swap(mParticles[min_idx], mParticles[i]); 
   }
 }
 
