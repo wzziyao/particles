@@ -16,13 +16,15 @@ void main()
    color = uColor;
    uv = vPos.xy;
    
-   vec3 d = uOffset - (uSize / 2.0f);
-   mat4 TranslationMatrix = mat4(
+   vec3 d = -vec3(1.0, 1.0, 0.0) / 2.0f;
+   mat4 TranslationMatrixOrigin = mat4(
       1.0, 0.0, 0.0, 0.0,
       0.0, 1.0, 0.0, 0.0,
       0.0, 0.0, 1.0, 0.0,
       d, 1.0
    );
+
+   vec4 OriginalVector = TranslationMatrixOrigin * vec4(vPos, 1.0);
 
    mat4 ScaleMatrix = mat4(
       uSize, 0.0, 0.0, 0.0,
@@ -31,8 +33,23 @@ void main()
       0.0, 0.0, 0.0, 1.0
    );
 
+   vec3 newPos = vec3(OriginalVector.x, OriginalVector.y, OriginalVector.z);
+   vec3 y = vec3(0.0, 1.0, 0.0);
+   vec3 z = normalize(uCameraPos - newPos);
+   vec3 x = normalize(cross(y, z));
+   mat4 RotationMatrix = mat4(
+      x, 0.0,
+      y, 0.0, 
+      z, 0.0,
+      0.0, 0.0, 0.0, 1.0
+   );
 
-   vec4 OriginalVector = vec4(vPos, 1.0);
+   mat4 TranslationMatrixOffset = mat4(
+      1.0, 0.0, 0.0, 0.0,
+      0.0, 1.0, 0.0, 0.0,
+      0.0, 0.0, 1.0, 0.0,
+      uOffset, 1.0
+   );
    
-   gl_Position = TranslationMatrix * ScaleMatrix * OriginalVector; 
+   gl_Position = uVP * TranslationMatrixOffset * RotationMatrix * ScaleMatrix * OriginalVector; 
 }
