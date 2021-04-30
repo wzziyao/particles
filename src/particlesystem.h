@@ -14,6 +14,7 @@ namespace agl {
       glm::vec4 color;
       float size;
       float mass;
+      float life;
    };
 
    class ParticleSystem {
