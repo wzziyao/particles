@@ -47,4 +47,12 @@ particles/build $ ../bin/demo
 
 ## Results
 
-TODO: Show your work
+**Confetti**
+
+![Confetti GIF](images/confetti.gif)
+
+**Demo**
+
+Sparkle Trailing Effects
+
+![Confetti GIF](images/demo.gif)

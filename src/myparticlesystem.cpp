@@ -25,8 +25,8 @@ void MyParticleSystem::update(float dt)
       Particle current = mParticles[i];
 
       if (current.life < 0.0){
-			mParticles[i] = {initPos, random_unit_vector(), vec4(random_unit_vector(), 1.0f), 0.1f, 0.5f, random_float() + 1.0f};
-		} else {
+         mParticles[i] = {initPos, random_unit_vector(), vec4(random_unit_vector(), 1.0f), 0.1f, 0.5f, random_float() + 1.0f};
+      } else {
          current.vel -= vec3(0.0, 9.8*0.5, 0.0) * dt;
          current.pos += current.vel * dt;
          current.life -= dt;
