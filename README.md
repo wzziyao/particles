@@ -49,11 +49,13 @@ particles/build $ ../bin/demo
 
 **Confetti**
 
-![CONFETTI GIF](images/confetti.gif)
+![CONFETTI1 GIF](images/confetti.gif)
 
-**Demo**
+![CONFETTI2 GIF](images/confetti1.gif)
 
-Sparkle Trailing Effects
+**Sparkles Demo**
+
+Sparkle trailing effect with mouse cursor
 
 ![DEMO1 GIF](images/demo.gif)
 

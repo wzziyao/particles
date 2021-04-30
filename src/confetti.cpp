@@ -15,7 +15,7 @@ void Confetti::createParticles(int size)
    mTexture = theRenderer.loadTexture("../textures/particle.png");
    for (int i = 0; i < size; i++) {
      vec3 velocity = random_unit_vector();
-     Particle newParticle = {random_unit_cube(), vec3(0.5*velocity.x, 0.5*velocity.y, 0.5*velocity.z), vec4(random_unit_vector(), 1.0), 0.1f, 1.0f};
+     Particle newParticle = {random_unit_cube(), vec3(0.5*velocity.x, 0.5*velocity.y, 0.5*velocity.z), vec4(random_unit_vector(), 1.0), 0.25f, 1.0f};
      mParticles.push_back(newParticle);
    }
 }
