@@ -14,8 +14,9 @@ void MyParticleSystem::createParticles(int size)
 {
    mTexture = theRenderer.loadTexture("../textures/particle.png");
    for (int i = 0; i < size; i++) {
-     Particle newParticle = {initPos, random_unit_vector(), vec4(random_unit_vector(), 1.0f), 0.1f, 0.5f, random_float() + 1.0f};
-     mParticles.push_back(newParticle);
+   //   Particle newParticle = {initPos, random_unit_vector(), vec4(random_unit_vector(), 1.0f), 0.1f, 0.5f, random_float() + 1.0f};
+      Particle newParticle = {initPos, random_unit_vector(), vec4(0.95f, 0.93f, 0.59f, 1.0f), 0.1f, 0.5f, random_float() + 1.0f};
+      mParticles.push_back(newParticle);
    }
 }
 
@@ -25,9 +26,10 @@ void MyParticleSystem::update(float dt)
       Particle current = mParticles[i];
 
       if (current.life < 0.0){
-         mParticles[i] = {initPos, random_unit_vector(), vec4(random_unit_vector(), 1.0f), 0.1f, 0.5f, random_float() + 1.0f};
+         // mParticles[i] = {initPos, random_unit_vector(), vec4(random_unit_vector(), 1.0f), 0.1f, 0.5f, random_float() + 1.0f};
+         mParticles[i] = {initPos, random_unit_vector(), vec4(0.95f, 0.93f, 0.59f, 1.0f), 0.1f, 0.5f, random_float() + 1.0f};
       } else {
-         current.vel -= vec3(0.0, 9.8*0.5, 0.0) * dt;
+         current.vel -= vec3(0.0, 9.8*0.2, 0.0) * dt;
          current.pos += current.vel * dt;
          current.life -= dt;
          mParticles[i] = current;

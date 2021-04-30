@@ -49,10 +49,12 @@ particles/build $ ../bin/demo
 
 **Confetti**
 
-![Confetti GIF](images/confetti.gif)
+![CONFETTI GIF](images/confetti.gif)
 
 **Demo**
 
 Sparkle Trailing Effects
 
-![Confetti GIF](images/demo.gif)
+![DEMO1 GIF](images/demo.gif)
+
+![DEMO2 GIF](images/demo1.gif)
